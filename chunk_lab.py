@@ -253,6 +253,9 @@ def parse_document(name: str, data: bytes, parser="Quick text", ocr=False) -> Pa
                 parsed = assemble(name, parser, blocks, "Physical PDF pages from Docling provenance" if suffix == ".pdf" else "No physical page mapping for this format", native=native)
             elif parser == "Unstructured":
                 if suffix == ".pdf":
+                    # Surface language-model setup errors instead of the PDF parser's empty result.
+                    from unstructured.nlp.tokenize import sent_tokenize
+                    sent_tokenize("Parser startup check.")
                     from unstructured.partition.pdf import partition_pdf
                     native = partition_pdf(filename=str(path), strategy="fast", include_page_breaks=True)
                 elif suffix == ".docx":
