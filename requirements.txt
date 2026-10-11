@@ -2,6 +2,7 @@
 torch @ https://download.pytorch.org/whl/cpu/torch-2.14.1%2Bcpu-cp312-cp312-manylinux_2_28_x86_64.whl ; sys_platform == "linux"
 torchvision @ https://download.pytorch.org/whl/cpu/torchvision-0.29.1%2Bcpu-cp312-cp312-manylinux_2_28_x86_64.whl ; sys_platform == "linux"
 streamlit==1.65.0
+pyarrow==24.0.0
 pypdf==6.20.0
 python-docx==1.2.0
 tiktoken==0.12.0

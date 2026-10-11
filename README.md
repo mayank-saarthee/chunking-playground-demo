@@ -1,5 +1,7 @@
 # Chunking Playground
 
+[Open the public demo](https://chunking-playground-mayank.streamlit.app/) — no viewer sign-in required. Use synthetic documents only.
+
 A simple Streamlit demo for inspecting how document chunking works. Upload a synthetic PDF, DOCX or Markdown document, choose two tools and strategies, and compare their actual chunks and source boundaries.
 
 The app includes 9 tools and 29 strategies: Docling, LangChain, LlamaIndex, Chonkie, Haystack, Unstructured, semchunk, semantic-text-splitter, and a simple baseline. Tool and strategy selections open explanations in everyday language. Included documents are synthetic examples.
