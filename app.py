@@ -12,6 +12,9 @@ os.environ.setdefault("TIKTOKEN_CACHE_DIR", str(ROOT / ".cache" / "tiktoken"))
 os.environ.setdefault("NLTK_DATA", str(ROOT / ".cache" / "nltk"))
 os.environ.setdefault("HAYSTACK_TELEMETRY_ENABLED", "False")
 os.environ.setdefault("HF_HUB_DISABLE_SYMLINKS_WARNING", "1")
+os.environ["DO_NOT_TRACK"] = "1"
+os.environ["SCARF_NO_ANALYTICS"] = "1"
+os.environ["HF_HUB_DISABLE_TELEMETRY"] = "1"
 
 import streamlit as st
 from chunk_lab import TOOLS, parse_document, run_chunking, strategy_info
