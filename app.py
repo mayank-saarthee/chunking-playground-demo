@@ -104,13 +104,14 @@ with st.sidebar:
     sample = ROOT / "samples" / {"Markdown": "demo.md", "DOCX": "demo.docx", "PDF": "demo.pdf"}[demo]
     name, data = (uploaded.name, uploaded.getvalue()) if uploaded is not None else (sample.name, sample.read_bytes())
     st.caption(f"Selected: {name}")
-    extraction = st.selectbox("Text extraction for text chunkers", ["Quick text", "Docling", "Unstructured"], help="LangChain, LlamaIndex, Chonkie, Haystack, semchunk and semantic-text-splitter consume extracted text. Docling/Unstructured native chunkers always use their own parser.")
-    ocr = st.checkbox("Docling OCR for scanned PDFs", value=False)
-    st.caption("PDF pages are physical pages. DOCX page labels depend on explicit breaks or parser markers. Markdown normally has no pages.")
+    with st.expander("Advanced options", expanded=False):
+        st.caption("The defaults work for most documents. Open these settings to compare document readers or read scanned PDFs.")
+        extraction = st.selectbox("Text extraction for text chunkers", ["Quick text", "Docling", "Unstructured"], help="LangChain, LlamaIndex, Chonkie, Haystack, semchunk and semantic-text-splitter consume extracted text. Docling/Unstructured native chunkers always use their own parser.")
+        ocr = st.checkbox("Docling OCR for scanned PDFs", value=False)
+        st.caption("PDF pages are physical pages. DOCX page labels depend on explicit breaks or parser markers. Markdown normally has no pages.")
+        st.caption("Docling and semantic chunking may download models on first use.")
     st.divider()
     st.checkbox("Explain selections automatically", value=True, key="auto_help", help="Show a plain-language popup when you change a tool or strategy. About buttons always let you reopen the guide.")
-    st.caption("Processed on the machine running this demo • No AI API key required")
-    st.caption("Docling PDF and semantic chunking download open model weights on first use. Installation includes the heavier document libraries.")
 
 left, right = st.columns(2, gap="large")
 with left:
