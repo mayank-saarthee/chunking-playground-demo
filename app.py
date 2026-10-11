@@ -15,6 +15,9 @@ os.environ.setdefault("HF_HUB_DISABLE_SYMLINKS_WARNING", "1")
 os.environ["DO_NOT_TRACK"] = "1"
 os.environ["SCARF_NO_ANALYTICS"] = "1"
 os.environ["HF_HUB_DISABLE_TELEMETRY"] = "1"
+os.environ.setdefault("OMP_NUM_THREADS", "2")
+os.environ.setdefault("MKL_NUM_THREADS", "2")
+os.environ.setdefault("OPENBLAS_NUM_THREADS", "2")
 
 import streamlit as st
 from chunk_lab import TOOLS, parse_document, run_chunking, strategy_info
@@ -33,10 +36,11 @@ mark {background:#ffdf81; color:#202633}
 
 st.title("✂️ Chunking Playground")
 st.caption("Upload once. Compare two tools. See exactly where the chunks break.")
+st.caption("Public testing demo. Use synthetic documents only. No sign-in or payment required.")
 st.markdown("**Tool** = the library doing the work. **Strategy** = the rule it uses to divide the document.")
 
 
-@st.cache_resource(max_entries=12, show_spinner=False)
+@st.cache_resource(max_entries=3, show_spinner=False)
 def cached_parse(name, data, parser, ocr):
     return parse_document(name, data, parser, ocr)
 
