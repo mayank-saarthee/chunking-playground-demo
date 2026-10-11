@@ -1,0 +1,6 @@
+.venv/
+.cache/
+__pycache__/
+*.log
+.streamlit/secrets.toml
+PUBLIC-DEMO.txt
